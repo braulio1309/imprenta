@@ -281,7 +281,7 @@ return [
                 ],
                 [
                     'text'    => 'Deudores',
-                    'url'     => 'cuentas/deudores',
+                    'url'     => '/cuentas/deudores',
                     /*'submenu' => [
                         [
                             'text' => 'level_two',

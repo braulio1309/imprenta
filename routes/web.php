@@ -39,6 +39,7 @@ Route::post('/materiales/actualizar/{id}','MaterialesController@actualizar')    
 
 //Cuentas
 Route::get( '/pedidos/mostrar',         'CuentasController@AllCuentas')        ->name('pedidos.mostrar');
+Route::get( '/cuentas/deudores',         'CuentasController@pendientes')        ->name('cuentas.deudores');
 
 //Pedidos
 Route::get( '/pedidos/mostrar/{id}',         'PedidosController@pedidos')        ->name('pedidos.pedidos.mostrar');
