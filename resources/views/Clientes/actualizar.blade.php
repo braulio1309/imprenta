@@ -14,7 +14,7 @@
         <div class="card">
             
             <div class="card-body">
-                <form action="{{route('clientes.registro')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('clientes.actualizar', $cliente->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <h2 class="text-center">Información de contacto</h2>
                     <hr>
@@ -80,7 +80,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label> Domicilio </label>
-                            <input type="text" name="Domicilio" class="form-control" value="{{$cliente->domicilio}}" placeholder="Domicilio" required>
+                            <input type="text" name="domicilio" class="form-control" value="{{$cliente->domicilio}}" placeholder="Domicilio" required>
                         </div>
 
                         <div class="col-sm-2">

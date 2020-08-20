@@ -78,20 +78,21 @@ class ClientesController extends Controller
         $provincia  = $request->input('provincia');
         $localidad  = $request->input('localidad');
         $departamento= $request->input('departamento');
-
+        $numero = $request->input('numero');
 
         $validar = \Validator::make($request->all(), [
             'email'         => 'required|unique:clientes,email',
         ]);
         $cliente = Clientes::where('id', '=', $id)->first();;
 
-        $cliente->name = $name;
+        $cliente->name      = $name;
         $cliente->domicilio = $domicilio;
-        $cliente->piso = $piso;
-        $cliente->postal = $postal;
-        $cliente->email = $email;
+        $cliente->piso      = $piso;
+        $cliente->postal    = $postal;
+        $cliente->email     = $email;
         $cliente->localidad = $localidad;
-        $cliente->telefono = $telefono;
+        $cliente->telefono  = $telefono;
+        $cliente->numero    = $numero;
         $cliente->departamento = $departamento;
         $cliente->save();
 
