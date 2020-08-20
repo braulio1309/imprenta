@@ -252,6 +252,11 @@ return [
         ],*/
         ['header' => 'Opciones'],
         [
+            'text' => 'Usuarios',
+            'url'  => '/user/mostrar',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'Clientes',
             'url'  => '/clientes/mostrar',
             'icon' => 'fas fa-fw fa-user',

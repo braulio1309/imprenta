@@ -16,9 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', function() {
+Route::get('/', function() {
     return redirect()->route('clientes.mostrar');
 })->name('home')->middleware('auth');
+
+//user
+Route::get('/user/mostrar', 'UsersController@mostrar')->name('user.mostrar');
+Route::get('/user/actualizar/{id}', 'UsersController@actualizar_vista')->name('user.actualizar.vista');
+Route::post('/user/actu/{id}', 'UsersController@actualizar')->name('user.actualizar');
+Route::get('/user/eliminar/{id}', 'UsersController@eliminar')->name('user.eliminar');
+
 
 //Clientes
 Route::get('/clientes/mostrar', 'ClientesController@AllClientes')->name('clientes.mostrar');
