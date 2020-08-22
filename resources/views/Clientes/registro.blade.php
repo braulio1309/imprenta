@@ -18,7 +18,19 @@
                     @csrf
                     <h2 class="text-center">Información de contacto</h2>
                     <hr>
-
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Documento</label>
+                            <select name="tipo_doc" class="form-control">
+                                <option value="Cuit">CUIT</option>
+                                <option value="DNI">DNI</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Número</label>
+                            <input type="text" class="form-control" name="numero_doc" placeholder="000000">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">

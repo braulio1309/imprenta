@@ -21,9 +21,12 @@ Route::get('/', function() {
 })->name('home')->middleware('auth');
 
 //user
+
 Route::get('/user/mostrar', 'UsersController@mostrar')->name('user.mostrar');
 Route::get('/user/actualizar/{id}', 'UsersController@actualizar_vista')->name('user.actualizar.vista');
 Route::post('/user/actu/{id}', 'UsersController@actualizar')->name('user.actualizar');
+Route::post('/user/registro', 'UsersController@registro')->name('user.registro');
+Route::get('/user/registro', 'UsersController@registro_vista')->name('user.registro.vista');
 Route::get('/user/eliminar/{id}', 'UsersController@eliminar')->name('user.eliminar');
 
 

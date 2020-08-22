@@ -18,7 +18,24 @@
                     @csrf
                     <h2 class="text-center">Información de contacto</h2>
                     <hr>
-
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Documento</label>
+                            <select name="tipo_doc" class="form-control">
+                                @if($cliente->tipo_doc == 'Cuit')
+                                    <option value="Cuit" selected>CUIT</option>
+                                    <option value="DNI">DNI</option>
+                                @else
+                                    <option value="Cuit" >CUIT</option>
+                                    <option value="DNI" selected>DNI</option>
+                                @endif
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Número</label>
+                        <input type="text" class="form-control" name="numero_doc" placeholder="000000" value="{{$cliente->numero_doc}}">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">

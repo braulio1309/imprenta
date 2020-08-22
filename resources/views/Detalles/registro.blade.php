@@ -24,7 +24,7 @@
                     <hr>
                     <div class="original_div" id="dv">
                         <div class="row ">
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label> Materiales </label>
                                     <select name="material[]" class="form-control" >
@@ -35,17 +35,24 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label> Ancho (cm)</label>
                                     <input type="number" name="ancho[]" class="form-control" placeholder="cm" required>
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label> Largo (cm)</label>
                                     <input type="number" name="largo[]" class="form-control" placeholder="cm" required>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label> unidades</label>
+                                    <input type="number" name="unidades[]" class="form-control" placeholder="cantidad" required>
                                 </div>
                             </div>
                         </div>

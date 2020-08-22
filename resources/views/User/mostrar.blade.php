@@ -17,7 +17,7 @@
 @endif
 
 
-
+  <a href="{{route('user.registro.vista')}}" class="btn btn-success">Nuevo</a>
 
 <br>
 <table class="table table-striped">

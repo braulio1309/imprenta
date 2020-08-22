@@ -44,6 +44,7 @@ class PedidosController extends Controller
         $materiales    = $request->input('material');
         $ancho       = $request->input('ancho');
         $largo       = $request->input('largo');
+        $unidades = $request->input('unidades');
         $i = 0;
 
         $pedido = Pedidos::create([
@@ -62,14 +63,15 @@ class PedidosController extends Controller
             $material_precio = DB::table('materiales')->where('id', '=', $material)->get();
             $material_precio = $material_precio[0];
 
-            $precio_final = $mt2*$material_precio->precio;
+            $precio_final = $mt2*$material_precio->precio*$unidades[$i];
             $acumulador += $precio_final;
-
+          
             DetallePedidos::Create([
                 'pedido_id'     => $pedido->id,
                 'material_id'   => $material,
                 'precio'        => $precio_final,
-                'cantidad'      => $mt2
+                'cantidad'      => $mt2,
+                'unidades'      => $unidades[$i]
             ]);
 
             $i++;
