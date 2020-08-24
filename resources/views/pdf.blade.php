@@ -24,7 +24,12 @@
       <tr>
         <th scope="col"># Pedido</th>
         <th scope="col">Material</th>
+        <th scope="col">Ancho</th>
+        <th scope="col">Largo</th>
+        <th scope="col">Metros</th>
         <th scope="col">Cantidad</th>
+        <th scope="col">Metros</th>
+
         <th scope="col">Precio</th>
         <th scope="col">Fecha</th>
 
@@ -35,7 +40,10 @@
         <tr>
             <th scope="row">{{$detalle->id}}</th>
             <td>{{$detalle->nombre}}</td>
-            <td>{{$detalle->cantidad}} Mt2</td>
+            <td>{{$detalle->ancho}} mt</td>
+            <td>{{$detalle->largo}} mt</td>
+            <td>{{$detalle->unidades}} </td>
+            <td>{{$detalle->cantidad}}Mt2 </td>
             <td>${{$detalle->precio}}</td>
             <td>{{$detalle->created_at}}</td>
            

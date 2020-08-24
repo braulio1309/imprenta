@@ -17,6 +17,8 @@ class NewDetallePedidosTable extends Migration
             $table->id();
             $table->integer('material_id');
             $table->integer('pedido_id');
+            $table->float('ancho');
+            $table->float('largo');
             $table->float('cantidad');
             $table->integer('unidades');
             $table->float('precio');

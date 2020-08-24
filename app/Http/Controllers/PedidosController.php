@@ -58,7 +58,7 @@ class PedidosController extends Controller
             $anch = $ancho[$i]/100; 
             $larg = $largo[$i]/100; 
 
-            $mt2 = $anch + $larg;
+            $mt2 = $anch * $larg;
 
             $material_precio = DB::table('materiales')->where('id', '=', $material)->get();
             $material_precio = $material_precio[0];
@@ -70,6 +70,8 @@ class PedidosController extends Controller
                 'pedido_id'     => $pedido->id,
                 'material_id'   => $material,
                 'precio'        => $precio_final,
+                'ancho'         => $ancho[$i],
+                'largo'         => $largo[$i],
                 'cantidad'      => $mt2,
                 'unidades'      => $unidades[$i]
             ]);
@@ -212,7 +214,7 @@ class PedidosController extends Controller
         $detalle = DB::table('detalle_pedidos')
         ->where('detalle_pedidos.pedido_id', '=', $id)
         ->join('materiales', 'detalle_pedidos.material_id','=', 'materiales.id')
-        ->select('materiales.id', 'materiales.nombre', 'detalle_pedidos.precio', 'detalle_pedidos.cantidad', 'detalle_pedidos.created_at')
+        ->select('materiales.id', 'materiales.nombre', 'detalle_pedidos.precio', 'detalle_pedidos.cantidad', 'detalle_pedidos.created_at', 'detalle_pedidos.ancho', 'detalle_pedidos.largo', 'detalle_pedidos.unidades')
         ->orderby('detalle_pedidos.created_at','DESC')->get();
         
         $pdf = \PDF::loadView('pdf', ['pedido' => $pedido[0], 'detalles' => $detalle, 'acu' => 0]);
