@@ -26,10 +26,8 @@
         <th scope="col">Material</th>
         <th scope="col">Ancho</th>
         <th scope="col">Largo</th>
-        <th scope="col">Metros</th>
+        <th scope="col">Unidades</th>
         <th scope="col">Cantidad</th>
-        <th scope="col">Metros</th>
-
         <th scope="col">Precio</th>
         <th scope="col">Fecha</th>
 
