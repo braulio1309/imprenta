@@ -68,6 +68,10 @@ Route::get('/pagos/pagar/{pedido_id}',            'PagosController@pagar')      
 Route::post('/pagos/reporte',            'PagosController@pagos')            ->name('pagos.reporte');
 Route::get('/pagos/reporte/fecha',            'PagosController@pagosFecha')            ->name('pagos');
 Route::get('/pagos/reporte/excel/{fecha_inicio}/{fecha_fin}',            'PagosController@pagosExcel')            ->name('pagos.reporte.excel');
+Route::post('/pagos/cliente',            'PagosController@cliente')            ->name('pagos.cliente');
+Route::get('/pagos/clientes',            'PagosController@cliente_vista')            ->name('pagos.cliente.vista');
+Route::post('/pagos/pago/{id}',            'PagosController@nuevoPago')            ->name('pagos.pago');
+Route::get('/pagos/recientes',            'PagosController@recientes')            ->name('pagos.reciente');
 
 
 //Reporte

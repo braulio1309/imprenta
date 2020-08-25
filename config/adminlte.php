@@ -277,6 +277,16 @@ return [
             'icon' => 'fas fa-fw fa-credit-card',
         ],
         [
+            'text' => 'Nuevo Pago',
+            'url'  => '/pagos/clientes',
+            'icon' => 'fas fa-fw fa-credit-card',
+        ],
+        [
+            'text' => 'Pagos recientes',
+            'url'  => '/pagos/recientes',
+            'icon' => 'fas fa-fw fa-credit-card',
+        ],
+        [
             'text'    => 'Reportes',
             'icon'    => 'fas fa-fw  fa-align-center',
             'submenu' => [

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Exports\Pagos;
+use App\Exports\PagosE;
 use App\Pedidos;
 use App\Clientes;
 use App\Cuentas;
+use App\Pagos;
+
 
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -102,7 +104,7 @@ class PagosController extends Controller
             ->selectRaw('sum(detalle_pedidos.precio) as precio' )
             ->get();
         $total = $total[0];
-//var_dump($total->cliente_id);die();
+
         DB::table('pagos')->insert([
             'cliente_id' => $total->cliente_id,
             'monto'      => $total->precio,
@@ -118,5 +120,46 @@ class PagosController extends Controller
         $cuenta->save();
 
         return redirect()->route('pedidos.pedidos.mostrar', $cuenta->id);
+    }
+
+    public function cliente_vista(){
+        return view('Pagos/cliente');
+    }
+
+    public function cliente(Request $req){
+        $documento = $req->input('doc');
+
+        $cliente = Clientes::where('numero_doc', '=', $documento)
+        ->join('cuentas', 'cuentas.cliente_id', '=', 'clientes.id')
+        ->select('clientes.id', 'clientes.name', 'clientes.email', 'cuentas.deuda')->get();
+
+        return view('Pagos/monto', [
+            'cliente' => $cliente[0],
+        ]);
+    }
+
+    public function nuevoPago(Request $request, $cliente_id){
+        $monto = $request->input('monto');
+
+        Pagos::create([
+            'cliente_id' => $cliente_id,
+            'monto'      => $monto
+        ]);
+
+        $cuenta = Cuentas::where('cliente_id', '=', $cliente_id)->first();
+
+        $cuenta->deuda = $cuenta->deuda - $monto;
+        $cuenta->save();
+        return redirect()->route('pedidos.mostrar')->with('exito', 'Pago exitoso');
+
+    }
+
+    public function recientes(){
+        $pagos = Pagos::join('clientes', 'clientes.id', '=', 'pagos.cliente_id')
+        ->orderby('id', 'DESC')
+        ->select('pagos.id', 'clientes.name', 'pagos.monto', 'pagos.created_at')
+        ->get();
+
+        return view('Pagos/recientes', ['pagos' => $pagos]);
     }
 }
