@@ -45,7 +45,6 @@
 
          <td>
             <a href="{{route('pedidos.detalle.mostrar', $pedido->id)}}" class="btn btn-primary">Detalles</a>
-          <a href="{{route('pagos.pagar.pedido', $pedido->id)}}" class="btn btn-success">Pagar</a>
             
          </td>
            

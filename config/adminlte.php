@@ -271,11 +271,7 @@ return [
             'url'  => '/pedidos/mostrar',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
-            'text' => 'Pagos',
-            'url'  => '/pagos/reporte/fecha',
-            'icon' => 'fas fa-fw fa-credit-card',
-        ],
+        
         [
             'text' => 'Nuevo Pago',
             'url'  => '/pagos/clientes',
