@@ -17,10 +17,10 @@
     <hr>
     <div class="row">
         <div class="col-sm-6">
-            <input class="form-control" type="text" value="{{$cliente->name}}">
+            <input class="form-control" type="text" value="{{$cliente->name}}" readonly>
         </div>
         <div class="col-sm-6">
-            <input class="form-control" type="text" value="{{$cliente->email}}">
+            <input class="form-control" type="text" value="{{$cliente->email}}" readonly>
         </div>
     </div>
     <form action="{{route('pagos.pago',$cliente->id)}}" method="POST" enctype="multipart/form-data">   
@@ -30,6 +30,12 @@
                 
                 <label>Monto a cancelar</label>
                 <input type="number" min="0" max="{{$cliente->deuda}}"class="form-control" name="monto" placeholder="1234" >
+            </div>
+
+            <div class="col-sm-6">
+                
+                <label>Deuda total</label>
+                <input type="number" class="form-control"  value="{{$cliente->deuda}}" readonly >
             </div>
       
 
