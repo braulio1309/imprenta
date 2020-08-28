@@ -133,6 +133,9 @@ class PagosController extends Controller
         ->join('cuentas', 'cuentas.cliente_id', '=', 'clientes.id')
         ->select('clientes.id', 'clientes.name', 'clientes.email', 'cuentas.deuda')->get();
 
+       if(!isset($cliente[0])){
+        return redirect()->route('pagos.cliente.vista')->with('exito', 'Cliente inexistente');
+       }
         return view('Pagos/monto', [
             'cliente' => $cliente[0],
         ]);
@@ -147,6 +150,7 @@ class PagosController extends Controller
         ]);
 
         $cuenta = Cuentas::where('cliente_id', '=', $cliente_id)->first();
+       
 
         $cuenta->deuda = $cuenta->deuda - $monto;
         $cuenta->save();

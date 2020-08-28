@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Producto')
+@section('title', 'Cliente')
 
 @section('content_header')
     <h1 class="m-0 text-dark">Buscar cliente</h1>
@@ -8,8 +8,16 @@
 
 
 @section('content')
+<hr>
+@if(session()->has('exito'))
+    <div class="alert alert-warning">
+        <strong>{{ session()->get('exito') }}</strong>
+    </div>
+@endif
+
 <form action="{{route('pagos.cliente')}}" method="POST" enctype="multipart/form-data"> 
     <div class="container card">
+        
         <div class="car-body">
 
         

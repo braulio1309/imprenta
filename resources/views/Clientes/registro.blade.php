@@ -92,7 +92,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label> Domicilio </label>
-                            <input type="text" name="Domicilio" class="form-control" placeholder="Domicilio" >
+                            <input type="text" name="domicilio" class="form-control" placeholder="Domicilio" >
                         </div>
 
                         <div class="col-sm-2">

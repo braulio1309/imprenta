@@ -38,8 +38,8 @@
         <tr>
             <th scope="row">{{$detalle->id}}</th>
             <td>{{$detalle->nombre}}</td>
-            <td>{{$detalle->ancho}} mt</td>
-            <td>{{$detalle->largo}} mt</td>
+            <td>{{$detalle->ancho}} cm</td>
+            <td>{{$detalle->largo}} cm</td>
             <td>{{$detalle->unidades}} </td>
             <td>{{$detalle->cantidad}}Mt2 </td>
             <td>${{$detalle->precio}}</td>

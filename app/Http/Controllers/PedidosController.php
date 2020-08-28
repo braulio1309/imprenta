@@ -72,7 +72,7 @@ class PedidosController extends Controller
                 'precio'        => $precio_final,
                 'ancho'         => $ancho[$i],
                 'largo'         => $largo[$i],
-                'cantidad'      => $mt2,
+                'cantidad'      => $mt2*$unidades[$i],
                 'unidades'      => $unidades[$i]
             ]);
 
@@ -210,7 +210,7 @@ class PedidosController extends Controller
         ->join('clientes', 'clientes.id', '=', 'cuentas.cliente_id')
         ->select('clientes.name', 'pedidos.created_at', 'pedidos.estatus')
         ->get();
-        //  var_dump($pedido);die();
+
         $detalle = DB::table('detalle_pedidos')
         ->where('detalle_pedidos.pedido_id', '=', $id)
         ->join('materiales', 'detalle_pedidos.material_id','=', 'materiales.id')

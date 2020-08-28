@@ -26,16 +26,15 @@ class ClientesController extends Controller
         $provincia  = $request->input('provincia');
         $localidad  = $request->input('localidad');
         $departamento= $request->input('departamento');
+        $numero = $request->input('numero');
         $numero_doc = $request->input('numero_doc');
         $tipo_doc = $request->input('tipo_doc');
-
+        
 
         $validar = \Validator::make($request->all(), [
             'email'         => 'required|unique:clientes,email',
         ]);
-
         
-
         $cliente = Clientes::create([
             'name'          => $name,
             'telefono'      => $telefono,
@@ -47,7 +46,8 @@ class ClientesController extends Controller
             'piso'          => $piso,
             'postal'        => $postal,
             'departamento'  => $departamento,
-            'domicilio'     => $domicilio    
+            'domicilio'     => $domicilio ,
+            'numero'        => $numero   
 
         ]);
 
