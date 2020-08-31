@@ -293,30 +293,14 @@ return [
                 [
                     'text'    => 'Deudores',
                     'url'     => '/cuentas/deudores',
-                    /*'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],*/
                 ],
                 [
                     'text' => 'Ingresos',
                     'url'  => 'reporte/ingreso',
+                ],
+                [
+                    'text' => 'Total del día',
+                    'url'  => 'pagos/diario',
                 ],
             ],
         ],

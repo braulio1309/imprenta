@@ -72,6 +72,7 @@ Route::post('/pagos/cliente',            'PagosController@cliente')            -
 Route::get('/pagos/clientes',            'PagosController@cliente_vista')            ->name('pagos.cliente.vista');
 Route::post('/pagos/pago/{id}',            'PagosController@nuevoPago')            ->name('pagos.pago');
 Route::get('/pagos/recientes',            'PagosController@recientes')            ->name('pagos.reciente');
+Route::get('/pagos/diario',            'PagosController@diario')            ->name('pagos.diario');
 
 
 //Reporte

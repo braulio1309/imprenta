@@ -15,7 +15,9 @@
         {{ session()->get('exito') }}
     </div>
 @endif
-
+@if(isset($monto))
+    <h1 class="m-0 text-dark"> Ganancia de hoy: ${{$monto}}</h1>
+@endif
   <br>
 <table class="table table-striped">
     <thead>

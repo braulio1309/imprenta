@@ -166,4 +166,23 @@ class PagosController extends Controller
 
         return view('Pagos/recientes', ['pagos' => $pagos]);
     }
+
+    public function diario(){
+        $today = date('Y-m-d');
+        
+        $pagos = Pagos::join('clientes', 'clientes.id', '=', 'pagos.cliente_id')
+        ->where('pagos.created_at', 'LIKE', $today.'%')
+        ->orderby('id', 'DESC')
+        ->select('pagos.id', 'clientes.name', 'pagos.monto', 'pagos.created_at' )
+        ->get();
+
+        $monto = 0;
+       foreach($pagos AS $pago){
+           $monto += $pago->monto;
+       }
+        return view('Pagos/recientes', [
+            'pagos' => $pagos,
+            'monto' => $monto
+        ]); 
+    }
 }
