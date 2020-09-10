@@ -8,7 +8,7 @@ class Clientes extends Model
 {
     protected $fillable = [
         'name', 'departamento', 'email', 'domicilio', 
-        'provincia', 'numero', 'piso', 'postal', 'telefono', 'tipo_doc', 'numero_doc','localidad'
+        'provincia', 'numero', 'piso', 'postal', 'telefono', 'tipo_doc', 'numero_doc','localidad', 'estado'
 
     ];
 }

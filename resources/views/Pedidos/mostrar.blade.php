@@ -45,7 +45,8 @@
 
          <td>
             <a href="{{route('pedidos.detalle.mostrar', $pedido->id)}}" class="btn btn-primary">Detalles</a>
-            
+            <a href="{{route('pedidos.eliminar', $pedido->id)}}" class="btn btn-danger">Eliminar</a>
+
          </td>
            
         </tr>

@@ -21,6 +21,7 @@ class NewClientesTable extends Migration
             $table->string('email');
             $table->string('telefono');
             $table->string('provincia');
+            $table->string('estado')->nullable();
             $table->string('localidad')->nullable();
             $table->string('postal')->nullable();
             $table->string('domicilio')->nullable();

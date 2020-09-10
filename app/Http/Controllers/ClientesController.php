@@ -112,7 +112,9 @@ class ClientesController extends Controller
 
     public function AllClientes()
     {
-        $clientes = DB::table('clientes')->orderby('created_at','DESC')->get();
+        $clientes = DB::table('clientes')
+        ->where('estado', '=', null )
+        ->orderby('created_at','DESC')->get();
         
         return view('Clientes/mostrar', [
             'clientes' => $clientes
@@ -157,6 +159,19 @@ class ClientesController extends Controller
             ]);
         }
         
+    }
+
+    public function eliminar($id){
+        $cliente = Clientes::where('id', '=', $id)->first();
+        //$cliente = $cliente[0];
+
+        $cliente->estado = 'E';
+        $cuenta = Cuentas::where('cliente_id', '=', $cliente->id)->first();
+        $cuenta->delete();
+        $cuenta->save();
+        $cliente->save();
+
+        return redirect()->route('clientes.mostrar');
     }
 
     

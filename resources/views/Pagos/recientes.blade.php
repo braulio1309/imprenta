@@ -16,7 +16,10 @@
     </div>
 @endif
 @if(isset($monto))
-    <h1 class="m-0 text-dark"> Ganancia de hoy: ${{$monto}}</h1>
+    <h1 class="m-0 text-dark"> Ganancia de {{$fecha}}: ${{$monto}}</h1>
+    <hr>
+    <a href="{{route('pagos.fecha.vista')}}" class="btn btn-primary">Cambiar día</a>
+    
 @endif
   <br>
 <table class="table table-striped">

@@ -45,7 +45,7 @@
 
          <td>
             <a href="{{route('clientes.actualizar.vista', $cliente->id)}}" class=""><i class="fa fa-lg fa-list-alt "></i></a>
-            <!--<a href="{{route('pagos.reportar.vista', $cliente->id)}}" class=""><i style=""class="fa fa-lg fa-check-square text-success"></i></a>-->
+            <a href="{{route('clientes.eliminar', $cliente->id)}}" class="btn btn-danger">Eliminar</a>
          </td>
            
         </tr>

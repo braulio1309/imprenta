@@ -39,6 +39,8 @@ Route::post('/clientes/actualizar/{id}', 'ClientesController@actualizar')->name(
 Route::post('/clientes/mostrar', 'ClientesController@buscador')->name('clientes.buscador');
 Route::post('/clientes/actualizar/{id}', 'ClientesController@actualizar')->name('clientes.actualizar');
 Route::post('/clientes/buscar', 'ClientesController@buscador')->name('clientes.buscador');
+Route::get('/clientes/eliminar/{id}', 'ClientesController@eliminar')->name('clientes.eliminar');
+
 
 //Materiales
 Route::get('/materiales/mostrar',         'MaterialesController@AllMateriales')     ->name('materiales.mostrar');
@@ -56,6 +58,7 @@ Route::get( '/pedidos/mostrar/{id}',         'PedidosController@pedidos')       
 Route::get( '/pedidos/registro/{cuenta_id}',              'PedidosController@registro')        ->name('pedidos.pedidos.registro');
 Route::post( '/pedidos/registro/{cuenta_id}',             'PedidosController@new_registro')        ->name('pedidos.nuevo.registro');
 Route::name('pedidos.pdf')->get('/pedidos/imprimir/{id}', 'PedidosController@imprimir');
+Route::get( '/pedidos/eliminar/{id}',             'PedidosController@eliminar')        ->name('pedidos.eliminar');
 
 //Detalle pedidos
 Route::get( '/pedidos/detalle/{id}',         'DetallePedidosController@Detalle')        ->name('pedidos.detalle.mostrar');
@@ -73,6 +76,10 @@ Route::get('/pagos/clientes',            'PagosController@cliente_vista')       
 Route::post('/pagos/pago/{id}',            'PagosController@nuevoPago')            ->name('pagos.pago');
 Route::get('/pagos/recientes',            'PagosController@recientes')            ->name('pagos.reciente');
 Route::get('/pagos/diario',            'PagosController@diario')            ->name('pagos.diario');
+Route::get('/pagos/fecha',            'PagosController@fecha')            ->name('pagos.fecha.vista');
+Route::post('/pagos/particular',            'PagosController@particular')            ->name('pagos.particular');
+Route::get('/pagos/eliminar',            'PagosController@eliminar')            ->name('pagos.eliminar');
+
 
 
 //Reporte

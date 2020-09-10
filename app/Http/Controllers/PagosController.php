@@ -167,6 +167,10 @@ class PagosController extends Controller
         return view('Pagos/recientes', ['pagos' => $pagos]);
     }
 
+    public function fecha(){
+        return view('Pagos/fechap');
+    }
+
     public function diario(){
         $today = date('Y-m-d');
         
@@ -182,7 +186,43 @@ class PagosController extends Controller
        }
         return view('Pagos/recientes', [
             'pagos' => $pagos,
-            'monto' => $monto
+            'monto' => $monto,
+            'fecha' => $today
         ]); 
+    }
+
+    public function particular(Request $req){
+        
+        $fecha = $req->input('fecha');
+        
+        $pagos = Pagos::join('clientes', 'clientes.id', '=', 'pagos.cliente_id')
+        ->where('pagos.created_at', 'LIKE', $fecha.'%')
+        ->orderby('id', 'DESC')
+        ->select('pagos.id', 'clientes.name', 'pagos.monto', 'pagos.created_at' )
+        ->get();
+
+        $monto = 0;
+       foreach($pagos AS $pago){
+           $monto += $pago->monto;
+       }
+        return view('Pagos/recientes', [
+            'pagos' => $pagos,
+            'monto' => $monto,
+            'fecha' => $fecha
+        ]); 
+    }
+
+    public function eliminar($id){
+        $pago = Pagos::where('id', '=', $id)->first();
+        $pago = $pago[0];
+
+        $cuenta = Cuentas::where('cliente_id', '=', $pago->cliente_id)->first();
+        $cuenta = $cuenta[0];
+
+        $cuenta->deuda += $pago->monto;
+        
+        $pago->delete();
+
+        return redirect()->route('pagos.diario');
     }
 }

@@ -220,4 +220,29 @@ class PedidosController extends Controller
         $pdf = \PDF::loadView('pdf', ['pedido' => $pedido[0], 'detalles' => $detalle, 'acu' => 0]);
         return $pdf->download('pedido.pdf');
       }
+
+      public function eliminar($id){
+        $pedidos = DB::table('pedidos')
+        ->where('pedidos.id', '=', $id)
+        ->join('detalle_pedidos', 'pedidos.id', '=', 'detalle_pedidos.pedido_id')
+        ->groupBy('pedidos.id')
+        ->select('detalle_pedidos.id AS detalle_id', 'pedidos.id', 'pedidos.created_at', 'pedidos.updated_at', 'pedidos.estatus', 'pedidos.cuenta_id')
+        ->selectRaw('sum(detalle_pedidos.precio) as monto' )
+        ->orderby('pedidos.created_at','DESC')
+        ->get();
+
+        $monto = $pedidos[0]->monto;
+        foreach($pedidos as $pedido){
+           
+            $detalle = DB::table('detalle_pedidos')->where('id', '=', $pedido->detalle_id)->first();
+            $detalle = $detalle[0];
+            $detalle->delete();
+        }
+        $cuentas = Cuentas::where('id', '=', $pedidos[0]->cuenta_id)->first();
+        $cuenta = $cuenta[0];
+
+        $cuenta->deuda -= $pedidos[0]->monto;
+
+        return redirect()->route('pedidos.mostrar');
+      }
 }
